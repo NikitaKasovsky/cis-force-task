@@ -27,21 +27,34 @@ export class ViewComponent implements OnInit {
   // loaded user
   public user: IDetailUser;
 
+  // id user
+  private id: string;
+
   // Load detail user data
   private loadUser(): void {
     this.isLoading = true;
-    const id = this.route.snapshot.paramMap.get('id');
 
-    this.api.getUserDetail(id)
+    this.api.getUserDetail(this.id)
       .pipe(finalize(() => this.isLoading = false))
       .subscribe((user: IDetailUser) => {
         this.user = user;
+        localStorage.setItem(`user-${user.data.id}`, JSON.stringify(user));
       });
   }
 
   // Init component
   public ngOnInit(): void {
-    this.loadUser();
+    this.id = this.route.snapshot.paramMap.get('id');
+    const cashUser = this.id
+      ? JSON.parse(localStorage.getItem(`user-${this.id}`))
+      : null;
+
+    if (!cashUser) {
+      localStorage.clear();
+      this.loadUser();
+    }
+
+    this.user = cashUser;
   }
 
 }
