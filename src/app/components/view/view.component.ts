@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 // Services
 import { ApiService } from 'src/app/services';
@@ -20,14 +21,19 @@ export class ViewComponent implements OnInit {
     private readonly route: ActivatedRoute
   ) { }
 
+  // is loading
+  public isLoading: boolean;
+
   // loaded user
   public user: IDetailUser;
 
   // Load detail user data
   private loadUser(): void {
+    this.isLoading = true;
     const id = this.route.snapshot.paramMap.get('id');
 
     this.api.getUserDetail(id)
+      .pipe(finalize(() => this.isLoading = false))
       .subscribe((user: IDetailUser) => {
         this.user = user;
       });

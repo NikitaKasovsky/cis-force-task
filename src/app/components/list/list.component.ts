@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { finalize } from 'rxjs/operators';
 
 // Services
 import { ApiService } from 'src/app/services';
@@ -22,6 +23,9 @@ export class ListComponent implements OnInit {
   // List users
   public users: IUserData[];
 
+  // is loading
+  public isLoading: boolean;
+
   // pagination
   public pagination = {
     count: 0,
@@ -31,7 +35,9 @@ export class ListComponent implements OnInit {
 
   // load user list
   private loadUsers(): void {
+    this.isLoading = true;
     this.api.getUsers(this.pagination.currentPage + 1)
+      .pipe(finalize(() => this.isLoading = false))
       .subscribe((list: IUsers) => {
         this.users = list.data;
         this.pagination.limit = list.per_page;

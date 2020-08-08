@@ -1,3 +1,5 @@
+<mat-spinner *ngIf="isLoading" color="warn"></mat-spinner>
+
 <div class="wrapper" *ngFor="let user of users">
   <mat-card class="user-card" routerLink="{{user.id}}">
     <mat-card-header>

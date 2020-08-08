@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,8 @@ import { ApiService } from './services';
     MatCardModule,
     MatButtonModule,
     MatDividerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     httpInterceptorProvider,

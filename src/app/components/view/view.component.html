@@ -1,4 +1,6 @@
-<mat-card *ngIf="user" class="detail-info"> 
+<mat-spinner *ngIf="isLoading" color="warn"></mat-spinner>
+
+<mat-card *ngIf="user" class="detail-info">
   <mat-card-header>
     <mat-card-title>{{user.data.first_name}} {{user.data.last_name}}</mat-card-title>
   </mat-card-header>
