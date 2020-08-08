@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.detail-info {
+  width: 500px;
+}
+
+.second-title {
+  margin-top: 12px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px !important;
+}
+
+span {
+  font-weight: bold;
+}

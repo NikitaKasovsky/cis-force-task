@@ -20,3 +20,8 @@ export interface IUserData {
   last_name: string;
   avatar: string;
 }
+
+export interface IDetailUser {
+  data: IUserData;
+  ad: Ad;
+}

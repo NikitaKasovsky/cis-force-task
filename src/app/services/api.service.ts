@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 
 // Interfaces
 import {
-  IUsers
+  IUsers,
+  IDetailUser
 } from '../interfaces';
 
 
@@ -22,8 +23,8 @@ export class ApiService {
   }
 
   // get detail user info
-  public getUserDetail(id: string): Observable<any> {
-    return this.http.get(`users/${id}`);
+  public getUserDetail(id: string): Observable<IDetailUser> {
+    return this.http.get<IDetailUser>(`users/${id}`);
   }
 
 }

@@ -1,3 +1,24 @@
-<p>
-  view works!
-</p>
+<mat-card *ngIf="user" class="detail-info"> 
+  <mat-card-header>
+    <mat-card-title>{{user.data.first_name}} {{user.data.last_name}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="user.data.avatar">
+  <mat-card-content>
+    <h1>Base info</h1>
+    <div><span>id: </span>{{user.data.id}}</div>
+    <div><span>email: </span>{{user.data.email}}</div>
+
+    <mat-divider></mat-divider>
+
+    <h1 class="second-title">Company info</h1>
+    <div><span>name: </span>{{user.ad.company}}</div>
+    <div><span>description: </span>{{user.ad.text}}</div>
+    <div><span>url: </span><a href="{{user.ad.url}}" target="_blank">{{user.ad.url}}</a></div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button routerLink="">
+      Back to list
+    </button>
+  </mat-card-actions>
+</mat-card>

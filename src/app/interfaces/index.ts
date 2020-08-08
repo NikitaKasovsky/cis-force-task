@@ -1,1 +1,1 @@
-export { IUsers, IUserData } from './user.interface';
+export { IUsers, IUserData, IDetailUser } from './user.interface';

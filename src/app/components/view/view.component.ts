@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
+// Services
+import { ApiService } from 'src/app/services';
+
+// Interfaces
+import { IDetailUser } from 'src/app/interfaces';
+
+// Component detail user info
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -7,9 +15,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly api: ApiService,
+    private readonly route: ActivatedRoute
+  ) { }
 
-  ngOnInit() {
+  // loaded user
+  public user: IDetailUser;
+
+  // Load detail user data
+  private loadUser(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.api.getUserDetail(id)
+      .subscribe((user: IDetailUser) => {
+        this.user = user;
+      });
+  }
+
+  // Init component
+  public ngOnInit(): void {
+    this.loadUser();
   }
 
 }

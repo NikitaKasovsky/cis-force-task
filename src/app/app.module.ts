@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCardModule } from '@angular/material/card';
 
 // Material
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +34,8 @@ import { ApiService } from './services';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatCardModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [
     httpInterceptorProvider,
