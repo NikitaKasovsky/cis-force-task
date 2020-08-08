@@ -18,8 +18,8 @@ export class ApiService {
   ) { }
 
   // get list users
-  public getUsers(): Observable<IUsers> {
-    return this.http.get<IUsers>(`users`);
+  public getUsers(page: number): Observable<IUsers> {
+    return this.http.get<IUsers>(`users?page=${page}`);
   }
 
   // get detail user info

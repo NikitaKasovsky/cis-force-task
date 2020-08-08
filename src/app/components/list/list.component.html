@@ -10,3 +10,10 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<mat-paginator
+  [length]="pagination.count"
+  [pageSize]="pagination.limit"
+  [pageIndex]="pagination.currentPage - 1"
+  (page)="pageEventHandler($event)">
+</mat-paginator>

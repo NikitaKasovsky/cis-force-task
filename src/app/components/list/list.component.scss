@@ -17,3 +17,9 @@
 .user-card:hover {
   background-color: #ebf1f1;
 }
+
+mat-paginator {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
