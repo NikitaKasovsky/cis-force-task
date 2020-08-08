@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 // Services
 import { ApiService } from 'src/app/services';
 
+// Interfaces
+import { IUsers, IUserData } from 'src/app/interfaces';
+
 // Component user list
 @Component({
   selector: 'app-list',
@@ -15,10 +18,15 @@ export class ListComponent implements OnInit {
     private readonly api: ApiService
   ) { }
 
+  // List users
+  public users: IUserData[];
+
   // load user list
   private loadUsers(): void {
     this.api.getUsers()
-      .subscribe(console.log)
+      .subscribe((list: IUsers) => {
+        this.users = list.data;
+      });
   }
 
   // Init component
