@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+// Services
+import { ApiService } from 'src/app/services';
+
+// Component user list
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly api: ApiService
+  ) { }
 
-  ngOnInit() {
+  // load user list
+  private loadUsers(): void {
+    this.api.getUsers()
+      .subscribe(console.log)
+  }
+
+  // Init component
+  public ngOnInit(): void {
+    this.loadUsers();
   }
 
 }

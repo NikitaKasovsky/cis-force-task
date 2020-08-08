@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+// Service http requests
+@Injectable()
 export class ApiService {
 
-constructor() { }
+  constructor(
+    private readonly http: HttpClient,
+  ) { }
+
+  // get list users
+  public getUsers(): Observable<any> {
+    return this.http.get(`users`);
+  }
 
 }
